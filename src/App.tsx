@@ -5,19 +5,23 @@ import Favorites from './pages/Favorites/Favorites';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
 import Profile from './pages/Profile/Profile';
 import NotFound from './pages/NotFound/NotFound';
+import GlobalStyles from './styles/globalStyles';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/search" element={<Search />} />
-      <Route path="/album/:id" element={<Album />} />
-      <Route path="/favorites" element={<Favorites />} />
-      <Route path="/profile/edit" element={<ProfileEdit />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <>
+      <GlobalStyles />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/album/:id" element={<Album />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/profile/edit" element={<ProfileEdit />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 }
 
