@@ -10,3 +10,11 @@ export type ButtonProps = {
   isDisabled: boolean;
   isLoading: boolean;
 };
+
+export type SideMenuProps = {
+  username: string;
+};
+
+export type NavLinkProps = {
+  redirectsTo: string;
+};
