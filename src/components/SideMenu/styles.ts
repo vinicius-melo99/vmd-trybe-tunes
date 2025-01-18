@@ -9,7 +9,6 @@ export const MenuContainer = styled.section`
 
   section:nth-of-type(2) {
     flex-grow: 3;
-    background-color: blue;
   }
 
   section:nth-of-type(1),

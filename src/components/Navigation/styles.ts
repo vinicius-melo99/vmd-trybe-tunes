@@ -6,8 +6,24 @@ export const Nav = styled.nav`
   flex-direction: column;
 
   a {
+    display: flex;
+    align-items: center;
     width: 100%;
-    background-color: green;
-    padding: 10px;
+    padding: 20px 20px 20px 40px;
+    color: rgb(148, 148, 148);
+    text-decoration: none;
+    gap: 20px;
+    border-radius: 20px;
+    transition: 350ms;
+  }
+
+  a img {
+    width: 22px;
+    height: 22px;
+  }
+
+  a:hover {
+    background-color: #4ad5e2;
+    color: #1a1a1a;
   }
 `;

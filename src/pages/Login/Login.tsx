@@ -58,7 +58,7 @@ const Login = () => {
   return (
     <LoginPage>
       <LoginContainer>
-        <Logo></Logo>
+        <Logo />
         <InputContainer>
           <NameInput name={name} handleInput={handleInput} />
           <Button

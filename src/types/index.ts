@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react';
+import { IconType } from 'react-icons';
 
 export type NameInputProps = {
   name: string;
@@ -11,10 +12,18 @@ export type ButtonProps = {
   isLoading: boolean;
 };
 
-export type SideMenuProps = {
+export type NavLinkProps = {
+  redirectsTo: string;
+  Icon: IconType;
+  text: string;
+  highlight: boolean;
+};
+
+export type UserInformationType = {
   username: string;
 };
 
-export type NavLinkProps = {
-  redirectsTo: string;
+export type UserBoxType = {
+  username: string;
+  isLoading: boolean;
 };
