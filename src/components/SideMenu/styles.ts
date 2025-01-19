@@ -4,9 +4,8 @@ export const MenuContainer = styled.section`
   display: flex;
   flex-direction: column;
   width: 20%;
+  max-width: 330px;
   height: 100%;
-  position: fixed;
-  top: 0;
 
   background-color: #1a1a1a;
 
