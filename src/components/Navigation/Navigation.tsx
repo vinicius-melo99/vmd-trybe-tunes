@@ -4,15 +4,10 @@ import { FaSearch } from 'react-icons/fa';
 import { GoStar } from 'react-icons/go';
 import { CgProfile } from 'react-icons/cg';
 import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
 // import { GoStarFill } from 'react-icons/go';
 
 const Navigation = () => {
   const { pathname } = useLocation();
-
-  useEffect(() => {
-    console.log(pathname);
-  }, [pathname]);
 
   return (
     <Nav>

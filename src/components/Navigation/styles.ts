@@ -26,4 +26,9 @@ export const Nav = styled.nav`
     background-color: #4ad5e2;
     color: #1a1a1a;
   }
+
+  svg {
+    min-width: 23px;
+    min-height: 23px;
+  }
 `;

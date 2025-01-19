@@ -22,4 +22,19 @@ export const Box = styled.div`
   /* padding: 10px; */
   border-radius: 20px;
   overflow-x: hidden;
+  animation: test 0.4s;
+
+  svg {
+    min-height: 38px;
+    min-width: 38px;
+  }
+
+  @keyframes test {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;

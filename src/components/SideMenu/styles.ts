@@ -5,6 +5,9 @@ export const MenuContainer = styled.section`
   flex-direction: column;
   width: 20%;
   height: 100%;
+  position: fixed;
+  top: 0;
+
   background-color: #1a1a1a;
 
   section:nth-of-type(2) {
