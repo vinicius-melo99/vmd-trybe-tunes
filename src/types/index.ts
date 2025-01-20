@@ -27,3 +27,19 @@ export type UserBoxType = {
   username: string;
   isLoading: boolean;
 };
+
+export type ReactNodeType = {
+  children: React.ReactNode;
+};
+
+export type MenuBoxType = {
+  children: React.ReactNode;
+};
+
+export type ContentContainerType = {
+  children: React.ReactNode;
+};
+
+export type PageHeaderType = {
+  children: React.ReactNode;
+};

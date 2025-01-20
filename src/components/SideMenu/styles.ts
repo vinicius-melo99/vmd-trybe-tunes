@@ -3,8 +3,8 @@ import { styled } from 'styled-components';
 export const MenuContainer = styled.section`
   display: flex;
   flex-direction: column;
-  width: 20%;
-  max-width: 330px;
+  width: 18%;
+  max-width: 310px;
   height: 100%;
 
   background-color: #1a1a1a;

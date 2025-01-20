@@ -1,10 +1,7 @@
+import { ReactNodeType } from '../../types';
 import { Box } from './styles';
 
-type Test = {
-  children: React.ReactNode;
-};
-
-const MenuBox = ({ children }: Test) => {
+const MenuBox = ({ children }: ReactNodeType) => {
   return <Box>{children}</Box>;
 };
 
