@@ -6,7 +6,7 @@ export const Header = styled.header`
   align-items: center;
   color: white;
   width: 100%;
-  height: 180px;
+  height: 25vh;
   -webkit-box-shadow: 0px 7px 6px -3px rgba(13, 13, 13, 1);
   -moz-box-shadow: 0px 7px 6px -3px rgba(13, 13, 13, 1);
   box-shadow: 0px 7px 6px -3px rgba(13, 13, 13, 1);

@@ -43,3 +43,24 @@ export type ContentContainerType = {
 export type PageHeaderType = {
   children: React.ReactNode;
 };
+
+export type AlbumType = {
+  artistId: number;
+  artistName: string;
+  collectionId: number;
+  collectionName: string;
+  collectionPrice: number;
+  artworkUrl100: string;
+  releaseDate: string;
+  trackCount: number;
+};
+
+export type ArtistInputType = {
+  getAlbums: (albums: AlbumType[]) => void;
+  toggleLoading: (isLoading: boolean) => void;
+};
+
+export type AlbumsContainerType = {
+  albums: AlbumType[];
+  isLoading: boolean;
+};
