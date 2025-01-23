@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react';
+import { IconType } from 'react-icons';
 
 export type NameInputProps = {
   name: string;
@@ -8,5 +9,58 @@ export type NameInputProps = {
 export type ButtonProps = {
   handleButton: () => void;
   isDisabled: boolean;
+  isLoading: boolean;
+};
+
+export type NavLinkProps = {
+  redirectsTo: string;
+  Icon: IconType;
+  text: string;
+  highlight: boolean;
+};
+
+export type UserInformationType = {
+  username: string;
+};
+
+export type UserBoxType = {
+  username: string;
+  isLoading: boolean;
+};
+
+export type ReactNodeType = {
+  children: React.ReactNode;
+};
+
+export type MenuBoxType = {
+  children: React.ReactNode;
+};
+
+export type ContentContainerType = {
+  children: React.ReactNode;
+};
+
+export type PageHeaderType = {
+  children: React.ReactNode;
+};
+
+export type AlbumType = {
+  artistId: number;
+  artistName: string;
+  collectionId: number;
+  collectionName: string;
+  collectionPrice: number;
+  artworkUrl100: string;
+  releaseDate: string;
+  trackCount: number;
+};
+
+export type ArtistInputType = {
+  getAlbums: (albums: AlbumType[]) => void;
+  toggleLoading: (isLoading: boolean) => void;
+};
+
+export type AlbumsContainerType = {
+  albums: AlbumType[];
   isLoading: boolean;
 };
