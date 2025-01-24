@@ -55,6 +55,12 @@ export type AlbumType = {
   trackCount: number;
 };
 
+export type SongType = {
+  trackId: number;
+  trackName: string;
+  previewUrl: string;
+};
+
 export type ArtistInputType = {
   getAlbums: (albums: AlbumType[]) => void;
   toggleLoading: (isLoading: boolean) => void;
