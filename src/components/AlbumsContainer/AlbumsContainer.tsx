@@ -19,7 +19,7 @@ const AlbumsContainer = ({ albums, isLoading }: AlbumsContainerType) => {
     );
 
     if (scrollYPositionJSON && scrollableSection.current) {
-      const scrollYPosition = JSON.parse(scrollYPositionJSON);
+      const scrollYPosition: number = JSON.parse(scrollYPositionJSON);
       scrollableSection.current.scrollTo({
         top: scrollYPosition,
         behavior: 'smooth',
