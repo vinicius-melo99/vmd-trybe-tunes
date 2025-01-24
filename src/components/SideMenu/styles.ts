@@ -6,7 +6,7 @@ export const MenuContainer = styled.section`
   width: 18%;
   max-width: 310px;
   height: 100%;
-
+  overflow-x: hidden;
   background-color: #1a1a1a;
 
   section:nth-of-type(2) {

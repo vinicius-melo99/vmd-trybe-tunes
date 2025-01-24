@@ -51,3 +51,20 @@ export const searchAlbumsAPI = async (artist: string): Promise<AlbumType[]> => {
 
   return response;
 };
+
+export const setAlbumsToLS = (albums: AlbumType[]): void => {
+  const albumsJSON: string = JSON.stringify(albums);
+
+  localStorage.setItem('albums', albumsJSON);
+};
+
+export const getAlbumsFromLS = (): AlbumType[] => {
+  const albumsJSON: string | null = localStorage.getItem('albums');
+
+  if (albumsJSON) {
+    const albums: AlbumType[] = JSON.parse(albumsJSON);
+    return albums;
+  }
+
+  return [];
+};
