@@ -38,6 +38,7 @@ const ArtistInput = ({ getAlbums, toggleLoading }: ArtistInputType) => {
   return (
     <InputForm onSubmit={handleSubmit}>
       <input
+        id="artist-name"
         type="text"
         placeholder="Nome do artista"
         autoFocus

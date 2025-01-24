@@ -10,17 +10,26 @@ export const Albums = styled.section`
   color: white;
   gap: 30px;
   padding: 100px 2%;
+
+  > img {
+    width: 64px;
+    height: 64px;
+  }
 `;
 
 export const AlbumCard = styled.div`
   display: flex;
   flex-direction: column;
   width: calc((100% / 4) - 40px);
-  /* height: auto; */
   overflow-x: auto;
   gap: 20px;
+  cursor: pointer;
+  transition: 300ms;
   animation: card-animation 0.5s ease-in-out;
-  /* background-color: red; */
+
+  &:hover {
+    transform: scale(1.07);
+  }
 
   img {
     width: 100%;
