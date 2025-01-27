@@ -3,13 +3,13 @@ import styled from 'styled-components';
 export const AlbumHeaderContainer = styled.div`
   display: flex;
   width: 100%;
-  justify-content: center;
+  height: 100%;
   position: relative;
 
   > div {
     position: absolute;
     left: 35%;
-    top: 10px;
+    bottom: 0px;
     display: flex;
     flex-direction: column;
   }

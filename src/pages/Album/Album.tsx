@@ -7,6 +7,7 @@ import { AlbumType } from '../../types';
 import { useParams } from 'react-router-dom';
 import { getAlbumsFromLS } from '../../funcs';
 import { AlbumHeaderContainer } from './styles';
+import SongsContainer from '../../components/SongsContainer/SongsContainer';
 
 const Album = () => {
   const [album, setAlbum] = useState<AlbumType>();
@@ -34,6 +35,7 @@ const Album = () => {
             </div>
           </AlbumHeaderContainer>
         </PageHeader>
+        <SongsContainer album={album} />
       </ContentContainer>
     </PageContainer>
   );

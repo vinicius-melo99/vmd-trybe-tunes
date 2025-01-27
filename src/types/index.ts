@@ -70,3 +70,7 @@ export type AlbumsContainerType = {
   albums: AlbumType[];
   isLoading: boolean;
 };
+
+export type SongsContainerType = {
+  album: AlbumType | undefined;
+};
