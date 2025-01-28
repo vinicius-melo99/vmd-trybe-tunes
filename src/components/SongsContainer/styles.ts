@@ -20,10 +20,17 @@ export const AlbumPictureContainer = styled.div`
 
 export const AlbumSongsContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
   width: 65%;
   height: 100%;
   overflow-y: auto;
   padding: 20px 2%;
+
+  audio {
+    width: 80%;
+    margin-bottom: 10px;
+  }
 `;
 
 export const Picture = styled.img`
