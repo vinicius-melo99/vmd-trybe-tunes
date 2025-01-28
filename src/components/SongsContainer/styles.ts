@@ -20,16 +20,22 @@ export const AlbumPictureContainer = styled.div`
 
 export const AlbumSongsContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  /* flex-direction: column; */
+  /* flex-wrap: wrap; */
+  flex-direction: column;
   width: 65%;
   height: 100%;
   overflow-y: auto;
   padding: 20px 2%;
 
-  audio {
-    width: 80%;
+  div p {
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
+
+  div audio {
+    width: 70%;
     margin-bottom: 10px;
+    vertical-align: middle;
   }
 `;
 
@@ -43,4 +49,20 @@ export const Picture = styled.img`
   -moz-box-shadow: -10px 7px 10px 1px rgba(15, 15, 15, 1);
   box-shadow: -10px 7px 10px 1px rgba(15, 15, 15, 1);
   border: 7px solid rgba(255, 255, 255, 0.07);
+`;
+
+export const FavoriteBtn = styled.button`
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-left: 10px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  > svg {
+    width: 100%;
+    height: 100%;
+  }
 `;
