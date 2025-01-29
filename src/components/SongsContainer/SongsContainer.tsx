@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
 import { SongsContainerType, SongType } from '../../types';
 import {
   AlbumPictureContainer,
@@ -15,6 +15,7 @@ import { MdFavoriteBorder } from 'react-icons/md';
 const SongsContainer = ({ album }: SongsContainerType) => {
   const [songs, setSongs] = useState<SongType[]>([]);
   const [favorites, setFavorites] = useState<SongType[]>([]);
+  const [currentPlaying, setCurrentPlaying] = useState<HTMLAudioElement>();
 
   useEffect(() => {
     if (album) {
@@ -43,6 +44,18 @@ const SongsContainer = ({ album }: SongsContainerType) => {
       setFavorites(JSON.parse(favoriteSongs));
     }
   }, []);
+
+  const handlePlay = (e: SyntheticEvent<HTMLAudioElement>) => {
+    const audioPlayed = e.target as HTMLAudioElement;
+
+    if (currentPlaying && currentPlaying !== audioPlayed) {
+      currentPlaying.pause();
+      currentPlaying.currentTime = 0;
+      return setCurrentPlaying(audioPlayed);
+    }
+
+    setCurrentPlaying(audioPlayed);
+  };
 
   const handleFavorite = (trackId: number) => {
     const songToFavorite: SongType = songs.find(
@@ -83,7 +96,7 @@ const SongsContainer = ({ album }: SongsContainerType) => {
         {songs.map(({ previewUrl, trackId, trackName }) => (
           <div key={trackId}>
             <p>{trackName}</p>
-            <audio controls>
+            <audio controls onPlay={handlePlay}>
               <source src={previewUrl} />
               Your browser does not support the audio element.
             </audio>
