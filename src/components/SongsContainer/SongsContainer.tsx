@@ -51,6 +51,7 @@ const SongsContainer = ({ album }: SongsContainerType) => {
     if (currentPlaying && currentPlaying !== audioPlayed) {
       currentPlaying.pause();
       currentPlaying.currentTime = 0;
+
       return setCurrentPlaying(audioPlayed);
     }
 
@@ -87,6 +88,14 @@ const SongsContainer = ({ album }: SongsContainerType) => {
     }
   };
 
+  const handleTimeUpdate = (e: SyntheticEvent<HTMLAudioElement>) => {
+    const audioPlaying = e.target as HTMLAudioElement;
+    const currentTime = audioPlaying.currentTime;
+    const duration = audioPlaying.duration;
+
+    if (currentTime === duration) audioPlaying.currentTime = 0;
+  };
+
   return (
     <Songs>
       <AlbumPictureContainer>
@@ -96,7 +105,7 @@ const SongsContainer = ({ album }: SongsContainerType) => {
         {songs.map(({ previewUrl, trackId, trackName }) => (
           <div key={trackId}>
             <p>{trackName}</p>
-            <audio controls onPlay={handlePlay}>
+            <audio controls onPlay={handlePlay} onTimeUpdate={handleTimeUpdate}>
               <source src={previewUrl} />
               Your browser does not support the audio element.
             </audio>
