@@ -1,4 +1,4 @@
-import { AlbumType, UserInformationType } from '../types';
+import { AlbumType, SongType, UserInformationType } from '../types';
 
 export const createUser = (username: string): Promise<string> =>
   new Promise((resolve, reject) => {
@@ -67,4 +67,17 @@ export const getAlbumsFromLS = (): AlbumType[] => {
   }
 
   return [];
+};
+
+export const getMusicsFromAPI = async (id: string): Promise<SongType[]> => {
+  const url = `https://itunes.apple.com/lookup?id=${id}&entity=song`;
+
+  const request = await fetch(url);
+  const {
+    results,
+  }: {
+    results: [AlbumType, ...SongType[]];
+  } = await request.json();
+
+  return results.filter((_song, index) => index !== 0) as SongType[];
 };
