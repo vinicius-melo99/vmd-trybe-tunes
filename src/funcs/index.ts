@@ -81,3 +81,56 @@ export const getMusicsFromAPI = async (id: string): Promise<SongType[]> => {
 
   return results.filter((_song, index) => index !== 0) as SongType[];
 };
+
+export const getMusicsFromFavorites = (): SongType[] | void => {
+  if (!localStorage.getItem('favoriteSongs')) {
+    return localStorage.setItem('favoriteSongs', JSON.stringify([]));
+  }
+
+  const favoriteSongsJSON: string | null =
+    localStorage.getItem('favoriteSongs');
+  if (favoriteSongsJSON) {
+    const favoriteSongs: SongType[] = JSON.parse(favoriteSongsJSON);
+    return favoriteSongs;
+  }
+  return [];
+};
+
+export const checkIfIsFavorite = (trackId: number): boolean | undefined => {
+  const favoriteSongsLSJSON = localStorage.getItem('favoriteSongs');
+  if (favoriteSongsLSJSON) {
+    const favoriteSongsLS: SongType[] = JSON.parse(favoriteSongsLSJSON);
+
+    const alreadyFavorited = favoriteSongsLS.find(
+      (song) => song.trackId === trackId
+    );
+
+    if (alreadyFavorited) {
+      return true;
+    }
+
+    return false;
+  }
+};
+
+export const removeMusicFromFavorites = (trackId: number): SongType[] => {
+  const favoriteSongsLS: SongType[] = getMusicsFromFavorites() as SongType[];
+
+  const updatedFavorites = favoriteSongsLS.filter(
+    (song) => song.trackId !== trackId
+  );
+
+  const newFavorites = [...updatedFavorites];
+  localStorage.setItem('favoriteSongs', JSON.stringify(newFavorites));
+
+  return newFavorites;
+};
+
+export const addMusicToFavorites = (musicToFavorite: SongType): SongType[] => {
+  const oldFavorites: SongType[] = getMusicsFromFavorites() as SongType[];
+  const newFavorites = [...oldFavorites, musicToFavorite];
+
+  localStorage.setItem('favoriteSongs', JSON.stringify(newFavorites));
+
+  return newFavorites;
+};
