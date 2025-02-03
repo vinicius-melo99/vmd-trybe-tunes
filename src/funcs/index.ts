@@ -82,9 +82,9 @@ export const getMusicsFromAPI = async (id: string): Promise<SongType[]> => {
   return results.filter((_song, index) => index !== 0) as SongType[];
 };
 
-export const getMusicsFromFavorites = (): SongType[] | void => {
+export const getMusicsFromFavorites = (): SongType[] => {
   if (!localStorage.getItem('favoriteSongs')) {
-    return localStorage.setItem('favoriteSongs', JSON.stringify([]));
+    localStorage.setItem('favoriteSongs', JSON.stringify([]));
   }
 
   const favoriteSongsJSON: string | null =
@@ -93,6 +93,7 @@ export const getMusicsFromFavorites = (): SongType[] | void => {
     const favoriteSongs: SongType[] = JSON.parse(favoriteSongsJSON);
     return favoriteSongs;
   }
+
   return [];
 };
 

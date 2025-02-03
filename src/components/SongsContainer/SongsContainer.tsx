@@ -51,7 +51,7 @@ const SongsContainer = ({ album }: SongsContainerType) => {
     if (favoriteSongs) setFavorites(favoriteSongs);
   }, []);
 
-  const handlePlay = (e: SyntheticEvent<HTMLAudioElement>) => {
+  const handlePlay = (e: SyntheticEvent<HTMLAudioElement>): void => {
     const audioPlayed = e.target as HTMLAudioElement;
 
     if (currentPlaying && currentPlaying !== audioPlayed) {
