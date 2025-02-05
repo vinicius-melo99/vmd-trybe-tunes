@@ -7,7 +7,13 @@ import {
   Picture,
   Songs,
 } from './styles';
-import { getMusicsFromAPI } from '../../funcs';
+import {
+  addMusicToFavorites,
+  checkIfIsFavorite,
+  getMusicsFromAPI,
+  getMusicsFromFavorites,
+  removeMusicFromFavorites,
+} from '../../funcs';
 import Swal from 'sweetalert2';
 import { MdFavorite } from 'react-icons/md';
 import { MdFavoriteBorder } from 'react-icons/md';
@@ -18,34 +24,34 @@ const SongsContainer = ({ album }: SongsContainerType) => {
   const [currentPlaying, setCurrentPlaying] = useState<HTMLAudioElement>();
 
   useEffect(() => {
-    if (album) {
-      const albumId = album.collectionId.toString();
-      getMusicsFromAPI(albumId)
-        .then((data) => setSongs(data))
-        .catch(() => {
-          return Swal.fire({
-            icon: 'error',
-            title: 'Ooops..',
-            text: '500: fail to fetch',
-            timerProgressBar: true,
-            timer: 2000,
-          });
+    const getSongs = async () => {
+      try {
+        if (album) {
+          const albumId = album.collectionId.toString();
+          const response = await getMusicsFromAPI(albumId);
+          setSongs(response);
+        }
+      } catch {
+        Swal.fire({
+          icon: 'error',
+          title: 'Ooops..',
+          text: '500: fail to fetch',
+          timerProgressBar: true,
+          timer: 2000,
         });
-    }
+      }
+    };
+
+    getSongs();
   }, [album]);
 
   useEffect(() => {
-    if (!localStorage.getItem('favoriteSongs')) {
-      return localStorage.setItem('favoriteSongs', JSON.stringify([]));
-    }
+    const favoriteSongs = getMusicsFromFavorites();
 
-    const favoriteSongs = localStorage.getItem('favoriteSongs');
-    if (favoriteSongs) {
-      setFavorites(JSON.parse(favoriteSongs));
-    }
+    if (favoriteSongs) setFavorites(favoriteSongs);
   }, []);
 
-  const handlePlay = (e: SyntheticEvent<HTMLAudioElement>) => {
+  const handlePlay = (e: SyntheticEvent<HTMLAudioElement>): void => {
     const audioPlayed = e.target as HTMLAudioElement;
 
     if (currentPlaying && currentPlaying !== audioPlayed) {
@@ -63,29 +69,16 @@ const SongsContainer = ({ album }: SongsContainerType) => {
       (song) => song.trackId === trackId
     ) as SongType;
 
-    const favoriteSongsLSJSON = localStorage.getItem('favoriteSongs');
-    if (favoriteSongsLSJSON) {
-      const favoriteSongsLS: SongType[] = JSON.parse(favoriteSongsLSJSON);
+    const alreadyFavorited = checkIfIsFavorite(trackId);
 
-      const alreadyFavorited = favoriteSongsLS.find(
-        (song) => song.trackId === trackId
-      );
+    if (alreadyFavorited) {
+      const newFavorites = removeMusicFromFavorites(trackId);
 
-      if (alreadyFavorited) {
-        const updatedFavorites = favoriteSongsLS.filter(
-          (song) => song.trackId !== trackId
-        );
-
-        const newFavorites = [...updatedFavorites];
-        localStorage.setItem('favoriteSongs', JSON.stringify(newFavorites));
-        return setFavorites(newFavorites);
-      }
-
-      const newFavorites = [...favoriteSongsLS, songToFavorite];
-
-      localStorage.setItem('favoriteSongs', JSON.stringify(newFavorites));
-      setFavorites(newFavorites);
+      return setFavorites(newFavorites);
     }
+
+    const newFavorites = addMusicToFavorites(songToFavorite);
+    setFavorites(newFavorites);
   };
 
   const handleTimeUpdate = (e: SyntheticEvent<HTMLAudioElement>) => {
