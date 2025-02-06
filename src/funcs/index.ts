@@ -9,8 +9,11 @@ export const createUser = (username: string): Promise<string> =>
 
     setTimeout(() => {
       if (randomNumber > 100) {
-        const newUser = {
+        const newUser: UserInformationType = {
           username,
+          email: '',
+          description: '',
+          profileImgLink: '',
         };
         localStorage.setItem('userInformation', JSON.stringify(newUser));
         resolve('Usuário criado com sucesso.');
@@ -27,11 +30,9 @@ export const getUser = (): Promise<UserInformationType> =>
         const data = localStorage.getItem('userInformation');
         if (data) {
           const userInformation: UserInformationType = JSON.parse(data);
-          resolve(userInformation as UserInformationType);
+          resolve(userInformation);
         } else {
-          throw new Error(
-            '404: não foi possível recuperar as informaçãoes de usuário'
-          );
+          throw new Error('500: Erro interno de servidor');
         }
       } catch (e) {
         reject(e);
