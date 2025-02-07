@@ -4,9 +4,21 @@ import { getUser } from '../../funcs';
 import Swal from 'sweetalert2';
 import { UserInformationType } from '../../types';
 import profileIcon from '../../assets/profile.png';
+import loading from '../../assets/loading64.png';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileContainer = () => {
-  const [userInformation, setUserInformation] = useState<UserInformationType>();
+  const [username, setUsername] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
+  const [profileImg, setProfileImg] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+
+  const handleButton = () => {
+    navigate('/profile/edit');
+  };
 
   useEffect(() => {
     getUserInformation();
@@ -14,8 +26,12 @@ const ProfileContainer = () => {
 
   const getUserInformation = async () => {
     try {
+      setIsLoading(true);
       const information: UserInformationType = await getUser();
-      setUserInformation(information);
+      setUsername(information.username);
+      setEmail(information.email);
+      setDescription(information.description);
+      setProfileImg(information.profileImgLink);
     } catch (e) {
       Swal.fire({
         icon: 'error',
@@ -24,33 +40,41 @@ const ProfileContainer = () => {
         timer: 3500,
         timerProgressBar: true,
       });
+    } finally {
+      setIsLoading(false);
     }
   };
+
+  if (isLoading)
+    return (
+      <Profile>
+        <img src={loading} alt="Carregando" />
+      </Profile>
+    );
 
   return (
     <Profile>
       <ProfilePicture>
         <img
-          src={
-            userInformation?.username === ''
-              ? userInformation.profileImgLink
-              : profileIcon
-          }
+          src={!profileImg ? profileIcon : profileImg}
           alt="Imagem do perfil"
         />
       </ProfilePicture>
       <ProfileInformation>
         <div>
           <p>Nome</p>
-          <span>{userInformation?.username}</span>
+          <span>{username}</span>
         </div>
         <div>
           <p>Email</p>
-          <span>{userInformation?.email}</span>
+          <span>{email}</span>
         </div>
         <div>
           <p>Descrição</p>
-          <span>{userInformation?.description}</span>
+          <span>{description}</span>
+        </div>
+        <div>
+          <button onClick={handleButton}>Editar Perfil</button>
         </div>
       </ProfileInformation>
     </Profile>

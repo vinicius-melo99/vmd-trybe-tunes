@@ -2,7 +2,6 @@ import Login from './pages/Login/Login';
 import Search from './pages/Search/Search';
 import Album from './pages/Album/Album';
 import Favorites from './pages/Favorites/Favorites';
-import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
 import Profile from './pages/Profile/Profile';
 import NotFound from './pages/NotFound/NotFound';
 import GlobalStyles from './styles/globalStyles';
@@ -17,7 +16,7 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/album/:id" element={<Album />} />
         <Route path="/favorites" element={<Favorites />} />
-        <Route path="/profile/edit" element={<ProfileEdit />} />
+        <Route path="/profile/edit" element={<Profile />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
