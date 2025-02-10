@@ -4,11 +4,12 @@ import {
   ProfileInformation,
   ProfilePicture,
 } from '../../components/ProfileContainer/styles';
-import { getUser } from '../../funcs';
+import { getUser, updateUser } from '../../funcs';
 import Swal from 'sweetalert2';
 import { UserInformationType } from '../../types';
 import profileIcon from '../../assets/profile.png';
 import loading from '../../assets/loading64.png';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileEdit = () => {
   const [username, setUsername] = useState<string>('');
@@ -17,7 +18,9 @@ const ProfileEdit = () => {
   const [profileImg, setProfileImg] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [descriptionCharsRemaining, setDescriptionCharsRemaining] =
-    useState<number>(250);
+    useState<number>(250 - description.length);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getUserInformation();
@@ -71,6 +74,37 @@ const ProfileEdit = () => {
       });
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleUpdate = async () => {
+    const user: UserInformationType = {
+      username,
+      email,
+      description,
+      profileImgLink: profileImg,
+    };
+
+    setIsLoading(true);
+    try {
+      await updateUser(user);
+      Swal.fire({
+        icon: 'success',
+        title: 'Usuário alterado com sucesso!',
+        timer: 2500,
+        timerProgressBar: true,
+      });
+    } catch (e) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Ooops...',
+        text: `${e}`,
+        timer: 2500,
+        timerProgressBar: true,
+      });
+    } finally {
+      setIsLoading(false);
+      navigate('/profile');
     }
   };
 
@@ -128,6 +162,10 @@ const ProfileEdit = () => {
             onChange={handleTextArea}
           ></textarea>
           <span>{descriptionCharsRemaining}</span>
+        </div>
+
+        <div>
+          <button onClick={handleUpdate}>Salvar</button>
         </div>
       </ProfileInformation>
     </Profile>

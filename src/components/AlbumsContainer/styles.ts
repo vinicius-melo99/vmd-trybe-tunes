@@ -53,4 +53,20 @@ export const AlbumCard = styled.div`
       opacity: 1;
     }
   }
+
+  @media screen and (max-width: 770px) {
+    & {
+      /* width: 100%;s */
+      /* flex-direction: row; */
+      width: calc((100% / 3) - 30px);
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    & {
+      /* width: 100%;s */
+      /* flex-direction: row; */
+      width: calc((100% / 2) - 25px);
+    }
+  }
 `;

@@ -9,6 +9,7 @@ import UserBox from '../UserBox/UserBox';
 
 const SideMenu = () => {
   const [username, setUsername] = useState('');
+  const [imgLink, setImgLink] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -17,7 +18,10 @@ const SideMenu = () => {
     setIsLoading(true);
 
     getUser()
-      .then((userInformation) => setUsername(userInformation.username))
+      .then((userInformation) => {
+        setUsername(userInformation.username);
+        setImgLink(userInformation.profileImgLink);
+      })
       .catch(() => navigate('/'))
       .finally(() => setIsLoading(false));
   }, [navigate]);
@@ -31,7 +35,7 @@ const SideMenu = () => {
         <Navigation />
       </MenuBox>
       <MenuBox>
-        <UserBox username={username} isLoading={isLoading} />
+        <UserBox username={username} isLoading={isLoading} imgLink={imgLink} />
       </MenuBox>
     </MenuContainer>
   );

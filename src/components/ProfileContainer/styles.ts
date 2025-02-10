@@ -11,12 +11,16 @@ export const Profile = styled.section`
 `;
 
 export const ProfilePicture = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
   width: 240px;
   height: 100%;
 
   img {
-    width: 100%;
-    height: 240px;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
   }
 `;
 
@@ -73,6 +77,7 @@ export const ProfileInformation = styled.div`
     padding: 5px 10px;
     border: none;
     outline: none;
+    margin-bottom: 5px;
     border-radius: 23px;
     font-weight: bolder;
     cursor: pointer;
@@ -81,4 +86,13 @@ export const ProfileInformation = styled.div`
       background-color: rgb(15, 65, 172);
     }
   }
+`;
+
+export const DescriptionBox = styled.div`
+  width: 450px;
+  height: 120px;
+  padding: 4px 0px;
+  font-weight: lighter;
+  font-size: 15px;
+  overflow-y: auto;
 `;

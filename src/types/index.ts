@@ -29,6 +29,7 @@ export type UserInformationType = {
 export type UserBoxType = {
   username: string;
   isLoading: boolean;
+  imgLink: string;
 };
 
 export type ReactNodeType = {

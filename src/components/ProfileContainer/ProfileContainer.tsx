@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Profile, ProfileInformation, ProfilePicture } from './styles';
+import {
+  DescriptionBox,
+  Profile,
+  ProfileInformation,
+  ProfilePicture,
+} from './styles';
 import { getUser } from '../../funcs';
 import Swal from 'sweetalert2';
 import { UserInformationType } from '../../types';
@@ -71,7 +76,9 @@ const ProfileContainer = () => {
         </div>
         <div>
           <p>Descrição</p>
-          <span>{description}</span>
+          <DescriptionBox>
+            {!description ? 'Adicione uma descrição...' : description}
+          </DescriptionBox>
         </div>
         <div>
           <button onClick={handleButton}>Editar Perfil</button>

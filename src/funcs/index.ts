@@ -23,6 +23,25 @@ export const createUser = (username: string): Promise<string> =>
     }, 1500);
   });
 
+export const updateUser = (
+  user: UserInformationType
+): Promise<UserInformationType> => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      localStorage.setItem('userInformation', JSON.stringify(user));
+
+      const updatedUserJSON = localStorage.getItem('userInformation');
+
+      if (updatedUserJSON) {
+        const updatedUser = JSON.parse(updatedUserJSON);
+        return resolve(updatedUser);
+      }
+
+      reject('Erro ao atualizar o usuário');
+    }, 1500);
+  });
+};
+
 export const getUser = (): Promise<UserInformationType> =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
