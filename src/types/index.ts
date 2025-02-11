@@ -21,11 +21,15 @@ export type NavLinkProps = {
 
 export type UserInformationType = {
   username: string;
+  email: string;
+  description: string;
+  profileImgLink: string;
 };
 
 export type UserBoxType = {
   username: string;
   isLoading: boolean;
+  imgLink: string;
 };
 
 export type ReactNodeType = {

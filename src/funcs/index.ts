@@ -9,8 +9,11 @@ export const createUser = (username: string): Promise<string> =>
 
     setTimeout(() => {
       if (randomNumber > 100) {
-        const newUser = {
+        const newUser: UserInformationType = {
           username,
+          email: '',
+          description: '',
+          profileImgLink: '',
         };
         localStorage.setItem('userInformation', JSON.stringify(newUser));
         resolve('Usuário criado com sucesso.');
@@ -20,6 +23,25 @@ export const createUser = (username: string): Promise<string> =>
     }, 1500);
   });
 
+export const updateUser = (
+  user: UserInformationType
+): Promise<UserInformationType> => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      localStorage.setItem('userInformation', JSON.stringify(user));
+
+      const updatedUserJSON = localStorage.getItem('userInformation');
+
+      if (updatedUserJSON) {
+        const updatedUser = JSON.parse(updatedUserJSON);
+        return resolve(updatedUser);
+      }
+
+      reject('Erro ao atualizar o usuário');
+    }, 1500);
+  });
+};
+
 export const getUser = (): Promise<UserInformationType> =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -27,11 +49,9 @@ export const getUser = (): Promise<UserInformationType> =>
         const data = localStorage.getItem('userInformation');
         if (data) {
           const userInformation: UserInformationType = JSON.parse(data);
-          resolve(userInformation as UserInformationType);
+          resolve(userInformation);
         } else {
-          throw new Error(
-            '404: não foi possível recuperar as informaçãoes de usuário'
-          );
+          throw new Error('500: Erro interno de servidor');
         }
       } catch (e) {
         reject(e);

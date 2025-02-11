@@ -31,4 +31,15 @@ export const Nav = styled.nav`
     min-width: 23px;
     min-height: 23px;
   }
+
+  @media screen and (max-width: 890px) {
+    & {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    & span {
+      display: none;
+    }
+  }
 `;

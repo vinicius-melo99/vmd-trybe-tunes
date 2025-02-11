@@ -11,4 +11,16 @@ export const Box = styled.section`
   img {
     height: 80px;
   }
+
+  @media screen and (max-width: 890px) {
+    & {
+      /* width: 100%;s */
+      flex-direction: row;
+    }
+
+    & img {
+      /* width: 100%;s */
+      height: 60px;
+    }
+  }
 `;

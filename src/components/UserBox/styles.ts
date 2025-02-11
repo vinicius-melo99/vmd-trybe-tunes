@@ -9,6 +9,14 @@ export const BoxContainer = styled.div`
     width: auto;
     height: auto;
   }
+
+  @media screen and (max-width: 890px) {
+    & {
+      display: none;
+      /* width: 100%;s */
+      /* flex-direction: row; */
+    }
+  }
 `;
 
 export const Box = styled.div`
@@ -19,7 +27,6 @@ export const Box = styled.div`
   background-color: #205fe5;
   color: white;
   font-size: 18px;
-  /* padding: 10px; */
   border-radius: 20px;
   overflow-x: hidden;
   animation: test 0.4s;
@@ -27,6 +34,13 @@ export const Box = styled.div`
   svg {
     min-height: 38px;
     min-width: 38px;
+  }
+
+  img {
+    height: 34px;
+    width: 34px;
+    margin: 3px 0px 3px 3px;
+    border-radius: 50%;
   }
 
   @keyframes test {

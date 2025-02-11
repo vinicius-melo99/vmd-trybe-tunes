@@ -22,4 +22,20 @@ export const MenuContainer = styled.section`
     justify-content: end;
     padding-bottom: 20px;
   }
+
+  @media screen and (max-width: 890px) {
+    & {
+      width: 100%;
+      min-width: 100%;
+      flex-direction: row;
+      align-items: center;
+      height: auto;
+      /* overflow-x: auto; */
+
+      & section:nth-of-type(2) {
+        flex-grow: 2;
+        flex-direction: row;
+      }
+    }
+  }
 `;
