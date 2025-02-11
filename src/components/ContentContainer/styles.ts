@@ -10,6 +10,7 @@ export const Content = styled.section`
   @media screen and (max-width: 890px) {
     & {
       width: 100%;
+      /* background-color: red; */
     }
   }
 `;

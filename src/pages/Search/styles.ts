@@ -11,6 +11,7 @@ export const PageContainer = styled.section`
     & {
       flex-direction: column;
       height: auto;
+      /* min-height: 900px; */
     }
   }
 `;
