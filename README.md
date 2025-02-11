@@ -1,50 +1,63 @@
-# React + TypeScript + Vite
+# Trybe Tunes 🎵
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto proposto pela Trybe, onde o objetivo é fornecer à pessoa usuária um ambiente capaz de reproduzir músicas dos mais variados artistas e bandas, criar uma lista de músicas favoritas e editar o perfil da pessoa usuária logada.
 
-Currently, two official plugins are available:
+## Deploy Link 🌐
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Acesse o deploy do meu projeto 👉 [Netlify](https://vmdtrybetunes.netlify.app/)
 
-## Expanding the ESLint configuration
+## Tabela de Conteúdos
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [Visão Geral](#overview)
+  - [O desafio](#o-desafio)
+  - [Screenshots](#screenshots)
+- [Desenvolvimento](#desenvolvimento)
+  - [Características Técnicas](#características-tecnicas)
+- [Autor](#autor)
 
-- Configure the top-level `parserOptions` property like this:
+## Visão Geral 🔎
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### O desafio
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Funcionalidades para o usuário
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- Simulação de login.
+- Pesquisar por uma banda ou um artista.
+- Listar os álbuns disponíveis dessa banda ou desse artista.
+- Visualizar as músicas de um álbum selecionado.
+- Reproduzir uma prévia das músicas do álbum.
+- Favoritar e desfavoritar músicas.
+- Ver a lista de músicas favoritadas.
+- Ver o perfil da pessoa logada.
+- Editar o perfil da pessoa logada.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Screenshots 📷
+
+### PC:
+![](./public/print1.png)
+![](./public/print2.png)
+![](./public/print3.png)
+![](./public/print4.png)
+![](./public/print5.png)
+![](./public/print6.png)
+![](./public/print7.png)
+![](./public/print8.png)
+
+## Desenvolvimento
+
+### Características Técnicas 🧑‍💻
+
+- HTML5 Semântico
+- CSS custom properties
+- Styled components
+- Flexbox
+- [React.js](https://reactjs.org/)
+- Typescript
+- Gerenciamento de estado de componente
+- Gerenciamento do Local Storage do navegador (escrita, leitura e remoção)
+- Aplicação de regras de negócio
+- Consumo da API do ITunes
+
+## Autor
+
+- Vinicius Melo: [LinkedIn](https://www.linkedin.com/in/vinicius-s-melo/)
